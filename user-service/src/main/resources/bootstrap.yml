@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: user-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.20.0.133:28848
+        namespace: testNacos
+      config:
+        server-addr: 172.20.0.133:28848
+        namespace: testNacos
+        group: DEFAULT_GROUP
+        username: nacos
+        password: nacos
