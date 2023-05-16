@@ -1,15 +1,17 @@
-package com.example.orderservice;
+package com.example.sharedservices;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableFeignClients(basePackages = {"com.example.sharedservices.openfegin.*"})
-public class OrderServiceApplication {
+@EnableDiscoveryClient
+@EnableFeignClients
+public class SharedServicesApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OrderServiceApplication.class, args);
+        SpringApplication.run(SharedServicesApplication.class, args);
     }
 
 }

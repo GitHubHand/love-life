@@ -1,6 +1,6 @@
 package com.example.orderservice.controller;
 
-import com.example.orderservice.config.OpenFeginService;
+import com.example.sharedservices.openfegin.user.UserOpenfeginApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class orderController {
 
     @Autowired
-    private OpenFeginService openFeginService;
+    private UserOpenfeginApi userOpenfeginApi;
 
     @GetMapping("/order")
     public String order(){
-        String date = openFeginService.getDate();
+        String date = userOpenfeginApi.getDate();
         return date+"order";
     }
 

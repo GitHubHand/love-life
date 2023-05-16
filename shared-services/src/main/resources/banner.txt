@@ -1,0 +1,7 @@
+${AnsiColor.BRIGHT_GREEN}
+OS name:${os.name}      OS version:${os.version}        OS arch:${os.arch}
+Spring-Boot version:${spring-boot.version}${spring-boot.formatted-version}
+Java version:${java.version}        Java vendor:${java.vendor}      Java home:${java.home}
+Nacos address: ${spring.cloud.nacos.discovery.server-addr}      Nacos namespace: ${spring.cloud.nacos.discovery.namespace}      Nacos group: ${spring.cloud.nacos.discovery.group}
+Service Environment: ${spring.profiles.active}
+${AnsiColor.DEFAULT}

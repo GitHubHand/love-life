@@ -10,23 +10,14 @@
     </parent>
 
     <groupId>com.example</groupId>
-    <artifactId>order-service</artifactId>
+    <artifactId>shared-services</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>order-service</name>
-    <description>order-service</description>
+    <name>shared-services</name>
+    <description>shared-services</description>
 
     <properties>
         <java.version>8</java.version>
     </properties>
-    <dependencies>
-        <!-- Add the shared-services dependency -->
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>shared-services</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
 
     <build>
         <plugins>
