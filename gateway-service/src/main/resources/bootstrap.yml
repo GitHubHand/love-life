@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    active: dev                                                                                                   #指定当前环境
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_ADDRESS:172.20.0.133:28848}
+        namespace: ${NACOS_NAMESPACE:testNacos}                                       #命名空间的ID
+        group: ${NACOS_GROUP:TEST_GROUP}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        group: ${spring.cloud.nacos.discovery.group}
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD:nacos}
+        file-extension: yaml                                                                                   #配置文件格式
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user-service/**
+          filters:
+            - StripPrefix=1
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+              - Path=/order-service/**
+          filters:
+              - StripPrefix=1
