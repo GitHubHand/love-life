@@ -1,33 +1,30 @@
 package com.example.userservice.controller;
 
+import com.example.userservice.entity.userEntity;
+import com.example.userservice.entity.userOrderEntity;
+import com.example.userservice.service.userService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
+import java.util.List;
 
 @Controller
-@RequestMapping("/test")
 @ResponseBody
+@RequestMapping("/user")
 public class userController {
     @Autowired
-    private RestTemplate restTemplate;
+    private userService userService;
 
-    @Value("${pattern.dateformat}")
-    private String dateformat;
-
-    @GetMapping("/restTemplate")
-    public String test() {
-        ResponseEntity<String> forEntity = restTemplate.getForEntity("localhost:8080/test/getDate", String.class);
-        return forEntity.getBody();
+    @GetMapping("/listUserAllInfo")
+    public List<userEntity> listUserAllInfo() {
+        return userService.listUserAllInfo();
     }
-    @GetMapping("/getDate")
-    public  String getDate(){
-        return LocalDateTime.now().format(DateTimeFormatter.ofPattern(dateformat));
+    @GetMapping(value = {"/listUserAndOrederInfoByUid/{uid}","/listUserAndOrederInfoByUid"})
+    public List<userOrderEntity> listUserAndOrederInfo(@PathVariable(value = "uid",required = false) String uid) {
+        return userService.listUserAndOrederInfo(uid);
     }
 }

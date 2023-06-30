@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev                                                                                                   #指定当前环境
+    active: test                                                                                                   #指定当前环境
   cloud:
     nacos:
       discovery:

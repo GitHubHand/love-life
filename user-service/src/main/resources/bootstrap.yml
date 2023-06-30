@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev                                                                                                   #指定当前环境
+    active: test                                                                                                   #指定当前环境
   cloud:
     nacos:
       discovery:
@@ -14,3 +14,12 @@ spring:
         username: ${NACOS_USERNAME:nacos}
         password: ${NACOS_PASSWORD:nacos}
         file-extension: yaml                                                                                   #配置文件格式
+        shared-configs[0]:                                                                                    #共享配置文件
+            data-id: love-life-common.yaml
+            group: DEFAULT_GROUP
+            refresh: true
+        enabled: true                                                                                            #开启nacos配置中心
+feign:
+  client:
+    httpclient:
+      enabled: true                                                                                              #开启feign的httpclient
